@@ -14,7 +14,7 @@ public class GameT extends JApplet {
 	
 	public Tank tank;
 	
-	public GameT() throws InterruptedException{
+	public GameT() throws Exception{
 		super();
 		setSize(WIDTH, HEIGHT);
 		
@@ -26,6 +26,7 @@ public class GameT extends JApplet {
 		
 		setVisible(true);
 		
+		
 	}
 	
 	public void start(){
@@ -33,6 +34,12 @@ public class GameT extends JApplet {
 		try {
 		//	super.repaint(5, 0, 0, 1000, 800);
 		//	GameT run=new GameT();
+			SQLCenter bob=new SQLCenter("bob");
+		//	this wasn't a smart idea but oh well
+			
+			
+			
+			
 			
 		}
 		catch (Exception e){

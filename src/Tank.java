@@ -25,7 +25,10 @@ public class Tank extends JPanel implements Runnable, KeyListener{
 		th=new Thread(this);
 		th.start();
 		globalMap=new GameMap();
-	 
+		clientPlayer=new Player("dummy",new Location(0,0), 0, 0);	 
+	}
+	public void setClientPlayer(Player p){ //annoying threading and design
+		clientPlayer=p;
 	}
 	public void paint(Graphics g){
 		update(g);	
@@ -33,7 +36,7 @@ public class Tank extends JPanel implements Runnable, KeyListener{
 	public void update(Graphics g){
 		super.paintComponent(g);
 		g.drawLine(-50, count, WIDTH, HEIGHT);
-		System.out.println(System.getProperty("user.name"));
+		//System.out.println(System.getProperty("user.name"));
 		//System.out.println(count);
 	}
 	@Override
@@ -75,6 +78,9 @@ public class Tank extends JPanel implements Runnable, KeyListener{
 		}
 		
 		
+	}
+	public Player getClientPlayer(){
+		return clientPlayer;
 	}
 
 	public int getCurrentTime() {
