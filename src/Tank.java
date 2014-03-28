@@ -9,7 +9,8 @@ import javax.swing.JPanel;
 
 public class Tank extends JPanel implements Runnable, KeyListener{
 	private static final int WIDTH = 1000;
-	private static final int HEIGHT = 800;
+	private static final int HEIGHT =750;
+	private SQLCenter sql;
 	
 	private Player clientPlayer;
 	private GameMap globalMap;
@@ -18,14 +19,14 @@ public class Tank extends JPanel implements Runnable, KeyListener{
 	
 	
 
-	public Tank()  throws InterruptedException {
+	public Tank()  throws Exception {
 		super();
 		setSize(WIDTH, HEIGHT);
 		count=0;
 		th=new Thread(this);
 		th.start();
 		globalMap=new GameMap();
-		clientPlayer=new Player("dummy",new Location(0,0), 0, 0);	 
+		clientPlayer=new Player("dummy",new Location(0,0), 0, 0, 0, 0, true);	 
 	}
 	public void setClientPlayer(Player p){ //annoying threading and design
 		clientPlayer=p;
@@ -35,7 +36,11 @@ public class Tank extends JPanel implements Runnable, KeyListener{
 	}
 	public void update(Graphics g){
 		super.paintComponent(g);
-		g.drawLine(-50, count, WIDTH, HEIGHT);
+		//g.drawLine(-50, count, WIDTH, HEIGHT);
+		g.drawLine(480, 305, 480, 345);
+		g.drawLine(480, 305, 520, 305);
+		g.drawLine(520, 305, 520, 345);
+		g.drawLine(480, 345, 520, 345);
 		//System.out.println(System.getProperty("user.name"));
 		//System.out.println(count);
 	}
@@ -56,26 +61,42 @@ public class Tank extends JPanel implements Runnable, KeyListener{
 		// TODO Auto-generated method stub
 		
 	}
+	public void SQL(String usr){
+		try{
+		sql=new SQLCenter(usr);
+		/*for(Player p:sql.getAllPlayers())
+			System.out.println(p); //just a test line*/
+	//	System.out.println(sql.getAllPlayers().get(0).getPlayerName()); //test line
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 
 	//GAME LOGIC
 	public void run(){
-		while(true){
-		//System.out.println(count);
-		count++;
+		SQL("test");
+		try {
+			clientPlayer=sql.getMainPlayer();
+			while(true){
+				//System.out.println(count);
+				count++;
 		
-			try {
+			
 				
 				th.sleep(15);
 				paint(getGraphics());
 				
-			} catch (InterruptedException e) {
-			
-				e.printStackTrace();
+				
 			}
 		
 			
 		
 		}
+		 catch (Exception e) {
+				
+				e.printStackTrace();
+			}
 		
 		
 	}

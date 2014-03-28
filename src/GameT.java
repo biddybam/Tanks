@@ -7,8 +7,8 @@ import javax.swing.JPanel;
 
 
 public class GameT extends JApplet {
-	private static final int WIDTH =1000;
-	private static final int HEIGHT = 800;
+	private static final int WIDTH = 1000;
+	private static final int HEIGHT = 750;
 	
 	//public int loopslot = -1; //current frame number
 	
@@ -34,7 +34,7 @@ public class GameT extends JApplet {
 		try {
 		//	super.repaint(5, 0, 0, 1000, 800);
 		//	GameT run=new GameT();
-			SQLCenter bob=new SQLCenter("bob");
+			
 		//	this wasn't a smart idea but oh well
 			
 			

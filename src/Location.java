@@ -9,5 +9,8 @@ public class Location {
 		locX=x;
 		locY=y;	
 	}
+	public String toString(){
+		return "("+locX+", "+locY+")";
+	}
 
 }

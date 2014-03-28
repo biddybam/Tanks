@@ -2,10 +2,13 @@ import java.awt.Color;
 
 
 
-public abstract class Obj {
+public class Obj {
 	
 	private Location loc;
-	//represents map objects, players, and their characteristics.
+	//represents map objects, players, and their characteristics
+	public Obj(Location l){
+		loc=l;
+	}
 	public Location getLoc(){
 		return loc;
 	}
